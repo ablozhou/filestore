@@ -1,0 +1,14 @@
+[Unit]
+Description=Personal File Store Primary Node
+After=network-online.target 
+# postgres.service
+
+[Service]
+EnvironmentFile=/etc/pstore/log.env
+EnvironmentFile=/etc/pstore/config.env
+ExecStart=/usr/local/bin/pstore --repo=${LOTUS_REPO} --database=${ESTUARY_DB_CONN} --datadir=${ESTUARY_DATA} --apilisten=${ESTUARY_API} --lightstep-token=${ESTUARY_LIGHTSTEP_TOKEN} --logging=false --fail-deals-on-transfer-failure --disable-deal-making=false --disable-content-adding=false --disable-local-content-adding=false
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

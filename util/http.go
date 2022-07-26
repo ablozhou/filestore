@@ -68,7 +68,7 @@ const (
 // returns false if authStr is not in a valid format
 // returns true otherwise
 func isValidAuth(authStr string) bool {
-	matchEst, _ := regexp.MatchString("^EST(.+)ARY$", authStr)
+	matchEst, _ := regexp.MatchString("^SEC(.+)RET$", authStr)
 	matchSecret, _ := regexp.MatchString("^SECRET(.+)SECRET$", authStr)
 	if !matchEst && !matchSecret {
 		return false
@@ -76,8 +76,8 @@ func isValidAuth(authStr string) bool {
 
 	// only get the uuid from the string
 	uuidStr := strings.ReplaceAll(authStr, "SECRET", "")
-	uuidStr = strings.ReplaceAll(uuidStr, "EST", "")
-	uuidStr = strings.ReplaceAll(uuidStr, "ARY", "")
+	uuidStr = strings.ReplaceAll(uuidStr, "SEC", "")
+	uuidStr = strings.ReplaceAll(uuidStr, "RET", "")
 
 	// check if uuid is valid
 	_, err := uuid.Parse(uuidStr)

@@ -38,7 +38,7 @@ type ContentAddIpfsBody struct {
 
 type ContentAddResponse struct {
 	Cid       string   `json:"cid"`
-	EstuaryId uint     `json:"estuaryId"`
+	EstuaryId uint     `json:"sourceId"`
 	Providers []string `json:"providers"`
 }
 

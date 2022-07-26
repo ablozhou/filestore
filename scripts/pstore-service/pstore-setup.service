@@ -1,0 +1,11 @@
+[Unit]
+Description=Setup pstore Primary Node
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/pstore/log.env
+EnvironmentFile=/etc/pstore/config.env
+ExecStart=/usr/local/bin/pstore --database=${ESTUARY_DB_CONN} --datadir=${ESTUARY_DATA} --lightstep-token=${ESTUARY_LIGHTSTEP_TOKEN} --logging setup
+
+[Install]
+WantedBy=multi-user.target

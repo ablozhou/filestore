@@ -2901,7 +2901,7 @@ func (s *Server) handleRegisterUser(c echo.Context) error {
 	}
 
 	authToken := &AuthToken{
-		Token:  "EST" + uuid.New().String() + "ARY",
+		Token:  "SEC" + uuid.New().String() + "RET",
 		User:   newUser.ID,
 		Expiry: time.Now().Add(time.Hour * 24 * 7),
 	}
@@ -3052,7 +3052,7 @@ func (s *Server) newAuthTokenForUser(user *User, expiry time.Time, perms []strin
 	}
 
 	authToken := &AuthToken{
-		Token:      "EST" + uuid.New().String() + "ARY",
+		Token:      "SEC" + uuid.New().String() + "RET",
 		User:       user.ID,
 		Expiry:     expiry,
 		UploadOnly: uploadOnly,

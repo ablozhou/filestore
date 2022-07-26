@@ -21,6 +21,7 @@ estuary.db
 estuary-shuttle.db
 estuary_calibnet.db
 leveldb/
+pstore
 peer.key
 wallet/
 

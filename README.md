@@ -1,6 +1,6 @@
-# Estuary
+# Personal File Storage
 
-> An experimental ipfs node
+> An Personal File Storage to store files to FileCoin. 
 
 ## Building
 
@@ -11,6 +11,12 @@ Requirements:
 - [hwloc](https://www.open-mpi.org/projects/hwloc/)
 - opencl
 
+```
+sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
 1. Run `make clean all` inside the estuary directory
 
 ## Running your own node
@@ -18,7 +24,7 @@ Requirements:
 To run locally in a 'dev' environment, first run:
 
 ```sh
-./estuary setup
+./pstore setup
 ```
 
 Save the auth token that this outputs, you will need it for interacting with
@@ -36,20 +42,20 @@ export FULLNODE_API_INFO=wss://api.chain.love
 Then run:
 
 ```sh
-./estuary --datadir=/path/to/storage --database=IF-YOU-NEED-THIS --logging
+./pstore --datadir=/path/to/storage --database=IF-YOU-NEED-THIS --logging
 ```
 
 NOTE: Estuary makes only verified deals by default and this requires the wallet address to have datacap(see https://verify.glif.io/). To make deals without datacap, it will require the wallet to have FIL, and the run command will need the `--verified-deal` option set to `false`.
 
 ```sh
-./estuary --datadir=/path/to/storage --database=IF-YOU-NEED-THIS --logging --verified-deal=false
+./pstore --datadir=/path/to/storage --database=IF-YOU-NEED-THIS --logging --verified-deal=false
 ```
 
 ## Running as daemon with Systemd
 
 The Makefile has a target that will install a generic but workable systemd service for estuary.
 
-Run `make install-estuary-service` on the machine you wish to run estuary on.
+Run `make install-pstore-service` on the machine you wish to run estuary on.
 
 Make sure to follow the instructions output by the `make` command as configuration is required before the service can run succesfully.
 
@@ -111,3 +117,6 @@ Related solution [here](https://github.com/filecoin-project/lotus/issues/1779#is
 ```
 RUSTFLAGS="-C target-cpu=native -g" FFI_BUILD_FROM_SOURCE=1 make clean deps bench
 ```
+
+## Thanks to
+[Estuary](https://estuary.tech)

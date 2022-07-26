@@ -65,8 +65,8 @@ deps: $(BUILD_DEPS)
 
 .PHONY: estuary
 estuary:
-	go build $(GOFLAGS)
-BINS+=estuary
+	go build $(GOFLAGS) -o pstore
+BINS+=pstore
 
 .PHONY: shuttle
 shuttle:
@@ -89,29 +89,29 @@ shuttle-proxy:
 BINS+=shuttle-proxy
 
 .PHONY: install
-install: estuary
-	@install -C estuary /usr/local/bin/estuary
+install: 
+	@install -C pstore /usr/local/bin/pstore
 
 .PHONY: install-shuttle
 install-shuttle: shuttle
 	@install -C estuary-shuttle /usr/local/bin/estuary-shuttle
 
-.PHONY: install-estuary-service
-install-estuary-service:
-	cp scripts/estuary-service/estuary-setup.service /etc/systemd/system/estuary-setup.service
-	cp scripts/estuary-service/estuary.service /etc/systemd/system/estuary.service
-	mkdir -p /etc/estuary
-	cp scripts/estuary-service/config.env /etc/estuary/config.env
-	mkdir -p /var/log/estuary
-	cp scripts/estuary-service/log.env /etc/estuary/log.env
+.PHONY: install-pstore-service
+install-pstore-service:
+	cp scripts/pstore-service/pstore-setup.service /etc/systemd/system/pstore-setup.service
+	cp scripts/pstore-service/pstore.service /etc/systemd/system/pstore.service
+	mkdir -p /etc/pstore
+	cp scripts/pstore-service/config.env /etc/pstore/config.env
+	mkdir -p /var/log/pstore
+	cp scripts/pstore-service/log.env /etc/pstore/log.env
 
-	#TODO: if service changes to estuary user/group, need to chown the /etc/estuary dir and contents
+	#TODO: if service changes to pstore user/group, need to chown the /etc/pstore dir and contents
 
 	systemctl daemon-reload
 
-	#Edit config values in /etc/estuary/config.env before running any estuary service files
-	#Run 'sudo systemctl start estuary-setup.service' to complete setup
-	#Run 'sudo systemctl enable --now estuary.service' once ready to enable and start estuary service
+	#Edit config values in /etc/pstore/config.env before running any pstore service files
+	#Run 'sudo systemctl start pstore-setup.service' to complete setup
+	#Run 'sudo systemctl enable --now pstore.service' once ready to enable and start pstore service
 
 
 .PHONY: install-estuary-shuttle-service

@@ -29,10 +29,10 @@ echo "$file"
 echo "$fname"
 
 #ESTUARY_TOKEN="whysaccesstoken3"
-#EST_HOST="http://localhost:3004"
+EST_HOST="http://localhost:3004"
 #EST_HOST="https://api.estuary.tech"
 #EST_HOST="https://upload.estuary.tech"
-EST_HOST="https://shuttle-4.estuary.tech"
+#EST_HOST="https://shuttle-4.estuary.tech"
 #EST_HOST="https://shuttle-5.estuary.tech"
 
 COLLECTION="185d7ffc-85d8-4b73-86bb-1ca6419bc10d"

@@ -46,7 +46,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-var appVersion string
+var appVersion string //= "v0.1.3-16-gbc7830d-dirty"
 var log = logging.Logger("estuary").With("app_version", appVersion)
 
 type storageMiner struct {
@@ -494,7 +494,7 @@ func main() {
 				}
 
 				authToken := &AuthToken{
-					Token:  "EST" + uuid.New().String() + "ARY",
+					Token:  "SEC" + uuid.New().String() + "RET",
 					User:   newUser.ID,
 					Expiry: time.Now().Add(time.Hour * 24 * 365),
 				}
